@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Ship.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Transitions\UI_Top.cs" Line="32" Column="5" />
+      <File FileName="Assets\Scripts\Ship.cs" Line="18" Column="3" />
+      <File FileName="Assets\Scripts\Transitions\UI_Bottom.cs" Line="29" Column="39" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
