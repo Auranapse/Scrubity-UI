@@ -3,73 +3,85 @@ using System.Collections;
 
 public class Ship : MonoBehaviour
 {
-	float f_Transition_Speed;
-	float f_Ship_Speed;
-	float f_Max_Ship_Speed;
-	Vector3 v3_StartPos;
-	Vector3 v3_EndPos;
-	bool b_transitionDone;
+    public float f_Transition_Speed;
+    Vector3 v3_Ship_Velocity;
+    float f_Max_Ship_Speed;
+    Vector3 v3_StartPos;
+    Vector3 v3_EndPos;
+    Vector3 v3_InitInputPos;
 
-	Vector3 v3_InitInputPos;
-	float f_test;
-	
-	// Use this for initialization
-	void Start ()
-	{
-		b_transitionDone = false;
-		f_Transition_Speed = 3f;
-		f_Ship_Speed = 0.02f;
-		f_Max_Ship_Speed = 100f;
-		v3_StartPos.Set (0, -6f, 0);
-		v3_EndPos.Set (0, -3.5f, 0);
-		v3_InitInputPos.Set (0, 0, 0);
+    public GameObject FunctionCall;
 
-		this.transform.position = v3_StartPos;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if (!b_transitionDone)
-		{
-			Vector3 diff = v3_EndPos - this.transform.position;
-			
-			this.transform.position += diff * Time.deltaTime * f_Transition_Speed;
-			
-			if (this.transform.position.y + 0.01f > v3_EndPos.y && this.transform.position.y - 0.01f < v3_EndPos.y)
-			{
-				this.transform.position = v3_EndPos;
-				b_transitionDone = true;
-			}
-		}
-		else
-		{
-			Vector3 inputPosition = Input.mousePosition;
+    // Use this for initialization
+    void Start()
+    {
+        f_Max_Ship_Speed = 100f;
+        v3_StartPos.Set(0, -6f, 0);
+        v3_EndPos.Set(0, -3.5f, 0);
+        v3_InitInputPos.Set(0, 0, 0);
+        v3_Ship_Velocity.Set(0, 0, 0);
 
-			//this.transform.position += new Vector3(f_Ship_Speed * Time.deltaTime,0,0);			
-			//Vector3 ray = Camera.main.ScreenToWorldPoint(new Vector3(inputPosition.x, inputPosition.y, 0));
+        this.transform.position = v3_StartPos;
+    }
 
-			if(Input.GetMouseButtonDown(0))
-			{
-				v3_InitInputPos = inputPosition;
-				Debug.Log(v3_InitInputPos);
-			}
+    // Update is called once per frame
+    void Update()
+    {
+        if (!FunctionCall.GetComponent<SmoothTransition>().S_TransitionIsDone())
+        {
+            this.transform.position = FunctionCall.GetComponent<SmoothTransition>().S_Transition(this.transform.position, v3_EndPos, f_Transition_Speed, Time.deltaTime);
+        }
+        else
+        {
+            Vector3 inputPosition = Input.mousePosition;
 
-			if(Input.GetMouseButton(0))
-			{
-				Vector3 diff = inputPosition - v3_InitInputPos;
-				if(diff.x > f_Max_Ship_Speed)
-				{
-					diff.x = f_Max_Ship_Speed;
-				}
+            //this.transform.position += new Vector3(f_Ship_Speed * Time.deltaTime,0,0);			
+            //Vector3 ray = Camera.main.ScreenToWorldPoint(new Vector3(inputPosition.x, inputPosition.y, 0));
 
-				if(diff.x < -f_Max_Ship_Speed)
-				{
-					diff.x = -f_Max_Ship_Speed;
-				}
+            if (Input.GetMouseButtonDown(0))
+            {
+                v3_InitInputPos = inputPosition;
+                //Debug.Log(v3_InitInputPos);
+            }
 
-				this.transform.position += new Vector3(diff.x * Time.deltaTime * f_Ship_Speed, 0, 0);
-			}
-		}
-	}
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 diff = inputPosition - v3_InitInputPos;
+                if (diff.x > f_Max_Ship_Speed)
+                {
+                    diff.x = f_Max_Ship_Speed;
+                }
+
+                if (diff.x < -f_Max_Ship_Speed)
+                {
+                    diff.x = -f_Max_Ship_Speed;
+                }
+
+                v3_Ship_Velocity.x += diff.x * Time.deltaTime;
+            }
+
+            if (v3_Ship_Velocity != new Vector3(0, 0, 0))
+            {
+                v3_Ship_Velocity += -v3_Ship_Velocity * Time.deltaTime * 10f;
+            }
+
+            if (this.transform.position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)
+            {
+                if(v3_Ship_Velocity.x > 0)
+                {
+                    v3_Ship_Velocity.x = 0;
+                }
+            }
+
+            if (this.transform.position.x < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x)
+            {
+                if (v3_Ship_Velocity.x < 0)
+                {
+                    v3_Ship_Velocity.x = 0;
+                }
+            }
+
+            this.transform.position += v3_Ship_Velocity * Time.deltaTime;
+        }
+    }
 }
