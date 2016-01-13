@@ -103,7 +103,7 @@ public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (AllowClickInput.canClick && !startAnim)
+        if (!startAnim)
         {
             tracker.SceneToChangeTo = SceneToChangeTo;
             initCHLGScreen.initialiseElements = false;

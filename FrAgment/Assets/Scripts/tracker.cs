@@ -21,7 +21,6 @@ public class tracker : MonoBehaviour {
     public static bool IsSwipeLeft(Vector3 curDownPos, Vector2 curUpPos)
     {
         float swipeDist = curDownPos.x - curUpPos.x;
-        Debug.Log(swipeDist);
         if (swipeDist > minSwipeDistance)
         {
             Debug.Log("Swipe left");
@@ -34,7 +33,6 @@ public class tracker : MonoBehaviour {
     public static bool IsSwipeRight(Vector3 curDownPos, Vector2 curUpPos)
     {
         float swipeDist = curUpPos.x - curDownPos.x;
-        Debug.Log(swipeDist);
         if (swipeDist > minSwipeDistance)
         {
             Debug.Log("Swipe right");
@@ -47,7 +45,6 @@ public class tracker : MonoBehaviour {
     public static bool IsSwipeUp(Vector3 curDownPos, Vector2 curUpPos)
     {
         float swipeDist = curUpPos.y - curDownPos.y;
-        Debug.Log(swipeDist);
         if (swipeDist > minSwipeDistance)
         {
             Debug.Log("Swipe up");
@@ -60,7 +57,6 @@ public class tracker : MonoBehaviour {
     public static bool IsSwipeDown(Vector3 curDownPos, Vector2 curUpPos)
     {
         float swipeDist = curDownPos.y - curUpPos.y;
-        Debug.Log(swipeDist);
         if (swipeDist > minSwipeDistance)
         {
             Debug.Log("Swipe down");
