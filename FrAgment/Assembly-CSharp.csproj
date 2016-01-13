@@ -48,8 +48,12 @@
      <Compile Include="Assets\Scripts\AllowClickInput.cs" />
      <Compile Include="Assets\Scripts\CHLGFadeout.cs" />
      <Compile Include="Assets\Scripts\CTRLFadeout.cs" />
+     <Compile Include="Assets\Scripts\Fading.cs" />
      <Compile Include="Assets\Scripts\RenderHelp.cs" />
      <Compile Include="Assets\Scripts\SFXFadeout.cs" />
+     <Compile Include="Assets\Scripts\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\SceneManager.cs" />
+     <Compile Include="Assets\Scripts\Translation.cs" />
      <Compile Include="Assets\Scripts\UIFadeout.cs" />
      <Compile Include="Assets\Scripts\UpdateCHLGScreen.cs" />
      <Compile Include="Assets\Scripts\changeCHLGPage.cs" />
@@ -60,11 +64,17 @@
      <Compile Include="Assets\Scripts\tracker.cs" />
      <Compile Include="Assets\handleCHLGSwipe.cs" />
      <Compile Include="Assets\handleSETTINGSwipe.cs" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
