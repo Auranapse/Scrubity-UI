@@ -45,36 +45,39 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AllowClickInput.cs" />
-     <Compile Include="Assets\Scripts\CHLGFadeout.cs" />
-     <Compile Include="Assets\Scripts\CTRLFadeout.cs" />
-     <Compile Include="Assets\Scripts\Fading.cs" />
-     <Compile Include="Assets\Scripts\RenderHelp.cs" />
-     <Compile Include="Assets\Scripts\SFXFadeout.cs" />
-     <Compile Include="Assets\Scripts\SceneLoader.cs" />
-     <Compile Include="Assets\Scripts\SceneManager.cs" />
-     <Compile Include="Assets\Scripts\Translation.cs" />
-     <Compile Include="Assets\Scripts\UIFadeout.cs" />
-     <Compile Include="Assets\Scripts\UpdateCHLGScreen.cs" />
-     <Compile Include="Assets\Scripts\changeCHLGPage.cs" />
-     <Compile Include="Assets\Scripts\initCHLGScreen.cs" />
-     <Compile Include="Assets\Scripts\initCTRLSettingsScreen.cs" />
-     <Compile Include="Assets\Scripts\initSFXSettingsScreen.cs" />
-     <Compile Include="Assets\Scripts\initUISettingsScreen.cs" />
-     <Compile Include="Assets\Scripts\tracker.cs" />
-     <Compile Include="Assets\handleCHLGSwipe.cs" />
-     <Compile Include="Assets\handleSETTINGSwipe.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
+     <Compile Include="Assets\Scripts\Rayson\Fading.cs" />
+     <Compile Include="Assets\Scripts\Rayson\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\Rayson\SceneManager.cs" />
+     <Compile Include="Assets\Scripts\Rayson\Translation.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\AllowClickInput.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\CHLGFadeout.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\CTRLFadeout.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\RenderHelp.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\SFXFadeout.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\UIFadeout.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\UpdateCHLGScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\changeCHLGPage.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\handleCHLGSwipe.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\handleSETTINGSwipe.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\initCHLGScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\initCTRLSettingsScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\initSFXSettingsScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\initUISettingsScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\tracker.cs" />
+     <Compile Include="Assets\SensitivitySliderScript.cs" />
+     <Compile Include="Assets\UISliderScript.cs" />
+     <Compile Include="Assets\UpdateUITextScript.cs" />
+     <Compile Include="Assets\UpdateVolumeTextScript.cs" />
+     <Compile Include="Assets\VolumeSliderScript.cs" />
+     <Compile Include="Assets\affectedByColor.cs" />
+     <Compile Include="Assets\changeControlScheme.cs" />
+     <Compile Include="Assets\renderWhichSoundTypeIcon.cs" />
+     <Compile Include="Assets\setColorsUI.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
