@@ -23,7 +23,6 @@ public class SFXFadeout : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        AllowClickInput.canClick = true;
         startAnim = false;
         startMenuAnim = false;
 
@@ -118,7 +117,6 @@ public class SFXFadeout : MonoBehaviour {
     {
         tracker.SceneToChangeTo = SceneToChangeTo;
         initSFXSettingsScreen.initialiseElements = false;
-        AllowClickInput.canClick = false;
         startAnim = true;
 
         PlayerPrefs.SetInt("renderHelp?", 1);

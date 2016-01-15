@@ -11,7 +11,6 @@ public class initUISettingsScreen : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        AllowClickInput.canClick = false;
         finishedAnim = false;
         initialiseElements = true;
 
@@ -37,7 +36,6 @@ public class initUISettingsScreen : MonoBehaviour {
             if (optionsContainer.localPosition.y > -1 && UIBox.GetAlpha() == 1)
             {
                 finishedAnim = true;
-                AllowClickInput.canClick = true;
                 Debug.Log("Finished UI Settings Init");
             }
         }

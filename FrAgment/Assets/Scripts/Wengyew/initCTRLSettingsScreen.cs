@@ -13,7 +13,6 @@ public class initCTRLSettingsScreen : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        AllowClickInput.canClick = false;
         finishedAnim = false;
         initialiseElements = true;
 
@@ -45,7 +44,6 @@ public class initCTRLSettingsScreen : MonoBehaviour {
             if (optionsContainer.localPosition.y > -2 && spaceship.localPosition.y < -36)
             {
                 finishedAnim = true;
-                AllowClickInput.canClick = true;
                 Debug.Log("Finished CTRL Settings Init");
             }
         }

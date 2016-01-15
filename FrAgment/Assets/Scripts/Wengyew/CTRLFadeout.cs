@@ -23,7 +23,6 @@ public class CTRLFadeout : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        AllowClickInput.canClick = true;
         startAnim = false;
         startMenuAnim = false;
 
@@ -115,7 +114,6 @@ public class CTRLFadeout : MonoBehaviour {
     {
         tracker.SceneToChangeTo = SceneToChangeTo;
         initCTRLSettingsScreen.initialiseElements = false;
-        AllowClickInput.canClick = false;
         startAnim = true;
 
         PlayerPrefs.SetInt("renderHelp?", 0);

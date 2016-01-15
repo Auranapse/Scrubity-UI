@@ -18,7 +18,6 @@ public class initCHLGScreen : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        AllowClickInput.canClick = false;
         finishedAnim = false;
         initialiseElements = true;
 

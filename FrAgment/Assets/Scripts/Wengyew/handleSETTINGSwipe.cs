@@ -9,7 +9,8 @@ public class handleSETTINGSwipe : MonoBehaviour {
     public Button swipeUpInvoke;
 
     private bool validPositionStart;
-    private float minXToSwipe = 265;
+    private float minXToSwipe = 400;
+    private float minYToSwipe = 200;
 
     // Use this for initialization
     void Start()
@@ -21,7 +22,7 @@ public class handleSETTINGSwipe : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Input.mousePosition.x > minXToSwipe)
+            if (Input.mousePosition.x > minXToSwipe || Input.mousePosition.y > minYToSwipe)
                 validPositionStart = true;
             else
                 validPositionStart = false;
@@ -31,7 +32,7 @@ public class handleSETTINGSwipe : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (validPositionStart && Input.mousePosition.x > minXToSwipe)
+            if (validPositionStart)
             {
                 if (tracker.IsSwipeUp(curDownPos, Input.mousePosition))
                 {

@@ -45,34 +45,33 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EditKeyBy1UsingButtons.cs" />
      <Compile Include="Assets\Scripts\Rayson\Fading.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Rayson\Translation.cs" />
-     <Compile Include="Assets\Scripts\Wengyew\AllowClickInput.cs" />
      <Compile Include="Assets\Scripts\Wengyew\CHLGFadeout.cs" />
      <Compile Include="Assets\Scripts\Wengyew\CTRLFadeout.cs" />
      <Compile Include="Assets\Scripts\Wengyew\RenderHelp.cs" />
      <Compile Include="Assets\Scripts\Wengyew\SFXFadeout.cs" />
      <Compile Include="Assets\Scripts\Wengyew\UIFadeout.cs" />
      <Compile Include="Assets\Scripts\Wengyew\UpdateCHLGScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\UpdateUITextScript.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\UpdateVolumeTextScript.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\affectedByColor.cs" />
      <Compile Include="Assets\Scripts\Wengyew\changeCHLGPage.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\changeControlScheme.cs" />
      <Compile Include="Assets\Scripts\Wengyew\handleCHLGSwipe.cs" />
      <Compile Include="Assets\Scripts\Wengyew\handleSETTINGSwipe.cs" />
      <Compile Include="Assets\Scripts\Wengyew\initCHLGScreen.cs" />
      <Compile Include="Assets\Scripts\Wengyew\initCTRLSettingsScreen.cs" />
      <Compile Include="Assets\Scripts\Wengyew\initSFXSettingsScreen.cs" />
      <Compile Include="Assets\Scripts\Wengyew\initUISettingsScreen.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\renderWhichSoundTypeIcon.cs" />
+     <Compile Include="Assets\Scripts\Wengyew\setColorsUI.cs" />
      <Compile Include="Assets\Scripts\Wengyew\tracker.cs" />
-     <Compile Include="Assets\SensitivitySliderScript.cs" />
-     <Compile Include="Assets\UISliderScript.cs" />
-     <Compile Include="Assets\UpdateUITextScript.cs" />
-     <Compile Include="Assets\UpdateVolumeTextScript.cs" />
-     <Compile Include="Assets\VolumeSliderScript.cs" />
-     <Compile Include="Assets\affectedByColor.cs" />
-     <Compile Include="Assets\changeControlScheme.cs" />
-     <Compile Include="Assets\renderWhichSoundTypeIcon.cs" />
-     <Compile Include="Assets\setColorsUI.cs" />
+     <Compile Include="Assets\WYGenericSliderScript.cs" />
+     <Compile Include="Assets\aofoaifj.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -107,7 +107,6 @@ public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
         {
             tracker.SceneToChangeTo = SceneToChangeTo;
             initCHLGScreen.initialiseElements = false;
-            AllowClickInput.canClick = false;
             startAnim = true;
 
             Debug.Log("Start CHLG animation to Menu Screen");
