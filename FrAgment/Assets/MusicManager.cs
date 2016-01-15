@@ -54,7 +54,6 @@ public class MusicManager : MonoBehaviour {
     {
         if (PlayerPrefs.GetInt("MusicType") == 1) //piano
         {
-
         }
         else if (PlayerPrefs.GetInt("MusicType") == 2) //8bit
         {
@@ -73,5 +72,12 @@ public class MusicManager : MonoBehaviour {
 
         BGM_Player.clip = sfx[0];
         BGM_Player.Play();
+    }
+
+    void Update()
+    {
+        BGM_Player.volume = (float)(PlayerPrefs.GetInt("MusicVolume")) * 0.01f;
+        SFX_Player.volume = (float)(PlayerPrefs.GetInt("SoundVolume")) * 0.01f;
+        SFX2_Player.volume = (float)(PlayerPrefs.GetInt("SoundVolume")) * 0.01f;
     }
 }

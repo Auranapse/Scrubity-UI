@@ -13,13 +13,16 @@ public class playSFX : MonoBehaviour {
 	
 	}
 
+    public static void SFXPlayButtonPressMethod()
+    {
+        MusicManager.SFX_Player.clip = MusicManager.sfx[(int)MusicManager.SoundList.button_press];
+        MusicManager.SFX_Player.Play();
+    }
+
     public void SFXPlayButtonPress()
     {
-        if (!MusicManager.SFX_Player.isPlaying)
-        {
-            MusicManager.SFX_Player.clip = MusicManager.sfx[(int)MusicManager.SoundList.button_press];
-            MusicManager.SFX_Player.Play();
-        }
+        MusicManager.SFX_Player.clip = MusicManager.sfx[(int)MusicManager.SoundList.button_press];
+        MusicManager.SFX_Player.Play();
     }
 
     public static void SFXPlaySwipe()

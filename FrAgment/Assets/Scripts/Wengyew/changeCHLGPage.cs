@@ -46,6 +46,8 @@ public class changeCHLGPage : MonoBehaviour, IPointerClickHandler {
         }
         else
         {
+            if (UpdateCHLGScreen.challengePage != changePageNum)
+                playSFX.SFXPlayButtonPressMethod();
             UpdateCHLGScreen.challengePage = changePageNum;
         }
     }

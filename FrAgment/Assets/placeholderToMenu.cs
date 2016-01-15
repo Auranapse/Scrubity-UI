@@ -17,4 +17,9 @@ public class placeholderToMenu : MonoBehaviour {
     {
         Application.LoadLevel("OptionScreen_Control");
     }
+
+    public void loadChlg()
+    {
+        Application.LoadLevel("ChallengeScreen");
+    }
 }

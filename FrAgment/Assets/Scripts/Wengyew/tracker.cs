@@ -40,7 +40,6 @@ public class tracker : MonoBehaviour {
         if (swipeDist > minSwipeDistance && Mathf.Abs(curDownPos.y - curUpPos.y) < maxSwipeOffset)
         {
             Debug.Log("Swipe left");
-            playSFX.SFXPlaySwipe();
             return true;
         }
 
@@ -53,7 +52,6 @@ public class tracker : MonoBehaviour {
         if (swipeDist > minSwipeDistance && Mathf.Abs(curDownPos.y - curUpPos.y) < maxSwipeOffset)
         {
             Debug.Log("Swipe right");
-            playSFX.SFXPlaySwipe();
             return true;
         }
 
@@ -66,7 +64,6 @@ public class tracker : MonoBehaviour {
         if (swipeDist > minSwipeDistance && Mathf.Abs(curDownPos.x - curUpPos.x) < maxSwipeOffset)
         {
             Debug.Log("Swipe up");
-            playSFX.SFXPlaySwipe();
             return true;
         }
 
@@ -79,7 +76,6 @@ public class tracker : MonoBehaviour {
         if (swipeDist > minSwipeDistance && Mathf.Abs(curDownPos.x - curUpPos.x) < maxSwipeOffset)
         {
             Debug.Log("Swipe down");
-            playSFX.SFXPlaySwipe();
             return true;
         }
 

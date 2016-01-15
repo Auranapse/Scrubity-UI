@@ -21,9 +21,23 @@ public class handleCHLGSwipe : MonoBehaviour {
         {
             UpdateCHLGScreen.updateStuff = true;
             if (tracker.IsSwipeLeft(curDownPos, Input.mousePosition))
+            {
+                if (UpdateCHLGScreen.challengePage == 3)
+                    playSFX.SFXPlaySwipe();
+                else
+                    playSFX.SFXPlayButtonPressMethod();
+
                 UpdateCHLGScreen.challengePage += 1;
+            }
             else if (tracker.IsSwipeRight(curDownPos, Input.mousePosition))
+            {
+                if (UpdateCHLGScreen.challengePage == 1)
+                    playSFX.SFXPlaySwipe();
+                else
+                    playSFX.SFXPlayButtonPressMethod();
+
                 UpdateCHLGScreen.challengePage -= 1;
+            }
         }
 	}
 }

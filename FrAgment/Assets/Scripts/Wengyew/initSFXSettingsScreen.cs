@@ -76,6 +76,17 @@ public class initSFXSettingsScreen : MonoBehaviour {
     public void setMusicType8bit()
     {
         PlayerPrefs.SetInt("MusicType", 2);
+
+        MusicManager.sfx[0] = (AudioClip)Resources.Load("8bit_menu_bgm");
+        MusicManager.sfx[1] = (AudioClip)Resources.Load("8bit_battle_bgm");
+        MusicManager.sfx[2] = (AudioClip)Resources.Load("8bit_button_press");
+        MusicManager.sfx[3] = (AudioClip)Resources.Load("8bit_sound_select");
+        MusicManager.sfx[4] = (AudioClip)Resources.Load("8bit_swipe");
+        MusicManager.sfx[5] = (AudioClip)Resources.Load("8bit_control_select");
+        MusicManager.sfx[6] = (AudioClip)Resources.Load("8bit_options_change");
+
+        MusicManager.BGM_Player.clip = MusicManager.sfx[0];
+        MusicManager.BGM_Player.Play();
     }
 
     public void setMusicTypeMetal()
