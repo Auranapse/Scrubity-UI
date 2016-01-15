@@ -34,14 +34,13 @@ public class handleSETTINGSwipe : MonoBehaviour {
         {
             if (validPositionStart)
             {
-                if (tracker.IsSwipeUp(curDownPos, Input.mousePosition))
+                Debug.Log("check swipe");
+                if (swipeUpInvoke != null && tracker.IsSwipeUp(curDownPos, Input.mousePosition))
                 {
-                    if (swipeUpInvoke != null)
                         swipeUpInvoke.onClick.Invoke();
                 }
-                else if (tracker.IsSwipeDown(curDownPos, Input.mousePosition))
+                else if (swipeDownInvoke != null && tracker.IsSwipeDown(curDownPos, Input.mousePosition))
                 {
-                    if (swipeDownInvoke != null)
                         swipeDownInvoke.onClick.Invoke();
                 }
             }

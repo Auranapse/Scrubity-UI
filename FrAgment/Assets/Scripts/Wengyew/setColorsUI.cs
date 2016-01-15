@@ -3,9 +3,27 @@ using System.Collections;
 
 public class setColorsUI : MonoBehaviour {
 
+    private static setColorsUI instance = null;
+
+    public static setColorsUI Instance
+    {
+        get { return instance; }
+    }
+
     public static bool UpdateColor;
     public static Color UIColor;
 
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 	// Use this for initialization
 	void Start () {
         if (!PlayerPrefs.HasKey("UI_Rv"))

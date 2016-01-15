@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Translation : MonoBehaviour {
-   
+public class Translation : MonoBehaviour
+{
+
     public float TimeStartForAnimation;
     public bool isInertiaEnter;
     public bool isInertiaLeave;
@@ -15,7 +16,8 @@ public class Translation : MonoBehaviour {
     float Timer;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class Translation : MonoBehaviour {
         {
             if (isInertiaEnter == true)
             {
-                Movement_Speed = Inertia(this.transform.position, EndPos, Movement_Speed*10);
+                Movement_Speed = Inertia(this.transform.position, EndPos, Movement_Speed * 10);
             }
             if (isInertiaLeave == true)
             {
@@ -35,9 +37,9 @@ public class Translation : MonoBehaviour {
             }
 
 
-            if (Mathf.Round((this.transform.position - EndPos).magnitude) < 5 )
+            if (Mathf.Round((this.transform.position - EndPos).magnitude) < 5)
             {
-                Direction.Set(0,0,0);
+                Direction.Set(0, 0, 0);
             }
 
             this.transform.position = Move(this.transform.position, Direction, Movement_Speed, Time.deltaTime);
