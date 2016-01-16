@@ -4,12 +4,11 @@ using System.Collections;
 public class SmoothTransition : MonoBehaviour
 {
     bool b_istransitiondone;
-    float f_snappingdist;
+    public float f_snappingdist;
     // Use this for initialization
     void Start()
     {
         b_istransitiondone = false;
-        f_snappingdist = 0.01f;
     }
     /*
     // Update is called once per frame

@@ -47,6 +47,11 @@
   <ItemGroup>
      <Compile Include="Assets\EditKeyBy1UsingButtons.cs" />
      <Compile Include="Assets\MusicManager.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\GameRuntimeHandler.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\Ship.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\Transitions\SmoothTransition.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\Transitions\UI_Bottom.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\Transitions\UI_Top.cs" />
      <Compile Include="Assets\Scripts\Rayson\Fading.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneManager.cs" />
@@ -76,17 +81,11 @@
      <Compile Include="Assets\invalidButtonScript.cs" />
      <Compile Include="Assets\placeholderToMenu.cs" />
      <Compile Include="Assets\playSFX.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
