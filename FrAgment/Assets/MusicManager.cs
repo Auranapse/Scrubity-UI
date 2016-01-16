@@ -27,6 +27,8 @@ public class MusicManager : MonoBehaviour {
         sound_swipe = 4,
         control_select = 5,
         options_change = 6,
+        game_start = 7,
+        invalid_press = 8,
 
         soundlist_totalsounds
     };
@@ -54,6 +56,15 @@ public class MusicManager : MonoBehaviour {
     {
         if (PlayerPrefs.GetInt("MusicType") == 1) //piano
         {
+            sfx[0] = (AudioClip)Resources.Load("default_menu_bgm");
+            sfx[1] = (AudioClip)Resources.Load("default_battle_bgm");
+            sfx[2] = (AudioClip)Resources.Load("default_button_press");
+            sfx[3] = (AudioClip)Resources.Load("default_sound_select");
+            sfx[4] = (AudioClip)Resources.Load("default_swipe");
+            sfx[5] = (AudioClip)Resources.Load("default_control_select");
+            sfx[6] = (AudioClip)Resources.Load("default_options_change");
+            sfx[7] = (AudioClip)Resources.Load("default_game_start");
+            sfx[8] = (AudioClip)Resources.Load("default_invalid_press");
         }
         else if (PlayerPrefs.GetInt("MusicType") == 2) //8bit
         {
@@ -64,6 +75,8 @@ public class MusicManager : MonoBehaviour {
             sfx[4] = (AudioClip)Resources.Load("8bit_swipe");
             sfx[5] = (AudioClip)Resources.Load("8bit_control_select");
             sfx[6] = (AudioClip)Resources.Load("8bit_options_change");
+            sfx[7] = (AudioClip)Resources.Load("8bit_game_start");
+            sfx[8] = (AudioClip)Resources.Load("8bit_invalid_press");
         }
         else if (PlayerPrefs.GetInt("MusicType") == 3) // metal
         {
@@ -71,7 +84,9 @@ public class MusicManager : MonoBehaviour {
         }
 
         BGM_Player.clip = sfx[0];
+        BGM_Player.loop = true;
         BGM_Player.Play();
+
     }
 
     void Update()

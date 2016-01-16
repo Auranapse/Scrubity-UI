@@ -48,4 +48,10 @@ public class playSFX : MonoBehaviour {
         MusicManager.SFX_Player.clip = MusicManager.sfx[(int)MusicManager.SoundList.options_change];
         MusicManager.SFX_Player.Play();
     }
+
+    public void SFXPlayInvalidButton()
+    {
+        MusicManager.SFX_Player.clip = MusicManager.sfx[(int)MusicManager.SoundList.invalid_press];
+        MusicManager.SFX_Player.Play();
+    }
 }

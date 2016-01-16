@@ -8,7 +8,7 @@ public class tracker : MonoBehaviour {
     public static int CurrentChallengeScreen;
 
     private static float minSwipeDistance = 100;
-    private static float maxSwipeOffset = 150;
+    private static float maxSwipeOffset = 400;
 
 	// Use this for initialization
 	void Start () {
