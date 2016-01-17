@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour {
         }
 	}
 
-    void ChangeSceneTo(string SceneToChange)
+    public void ChangeSceneTo(string SceneToChange)
     {
         Application.LoadLevel(SceneToChange);
     }

@@ -7,14 +7,14 @@ public class ScoreHandler : MonoBehaviour
     public GameObject FunctionCall;
     float f_Timer;
     int i_Score;
-    Text TEXTDISPLAY;
+    TextMesh TEXTDISPLAY;
 
     // Use this for initialization
     void Start()
     {
         f_Timer = 5f;
         i_Score = 0;
-        TEXTDISPLAY = GetComponent<Text>();
+        TEXTDISPLAY = GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
