@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour
     Vector3 v3_Ship_Velocity;
     public float f_Max_Ship_Speed;
     public float f_Ship_Speed_Sensitivity;
+    public float f_Max_Vertical_Movement;
     public Vector3 v3_StartPos;
     public Vector3 v3_EndPos;
     Vector3 v3_InitInputPos;
@@ -54,18 +55,33 @@ public class Ship : MonoBehaviour
 
                     if (Input.GetMouseButton(0))
                     {
-                        Vector3 diff = inputPosition - v3_InitInputPos;
-                        if (diff.x > f_Max_Ship_Speed)
+                        Vector3 temp = inputPosition - v3_InitInputPos;
+
+                        temp = temp * f_Ship_Speed_Sensitivity;
+
+                        if (temp.x > f_Max_Ship_Speed)
                         {
-                            diff.x = f_Max_Ship_Speed;
+                            temp.x = f_Max_Ship_Speed;
                         }
 
-                        if (diff.x < -f_Max_Ship_Speed)
+                        if (temp.x < -f_Max_Ship_Speed)
                         {
-                            diff.x = -f_Max_Ship_Speed;
+                            temp.x = -f_Max_Ship_Speed;
                         }
 
-                        v3_Ship_Velocity.x += diff.x * Time.deltaTime * f_Ship_Speed_Sensitivity;
+                        if (temp.y > f_Max_Ship_Speed)
+                        {
+                            temp.y = f_Max_Ship_Speed;
+                        }
+
+                        if (temp.y < -f_Max_Ship_Speed)
+                        {
+                            temp.y = -f_Max_Ship_Speed;
+                        }
+
+                        temp.z = 0f;
+
+                        v3_Ship_Velocity += temp * Time.deltaTime;
                     }
 
                     if (v3_Ship_Velocity != new Vector3(0, 0, 0))
@@ -80,12 +96,26 @@ public class Ship : MonoBehaviour
                             v3_Ship_Velocity.x = 0;
                         }
                     }
-
-                    if (this.transform.position.x < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x)
+                    else if (this.transform.position.x < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x)
                     {
                         if (v3_Ship_Velocity.x < 0)
                         {
                             v3_Ship_Velocity.x = 0;
+                        }
+                    }
+
+                    if (this.transform.position.y > f_Max_Vertical_Movement + v3_EndPos.y)
+                    {
+                        if (v3_Ship_Velocity.y > 0)
+                        {
+                            v3_Ship_Velocity.y = 0;
+                        }
+                    }
+                    else if (this.transform.position.y < v3_EndPos.y)
+                    {
+                        if (v3_Ship_Velocity.y < 0)
+                        {
+                            v3_Ship_Velocity.y = 0;
                         }
                     }
 
