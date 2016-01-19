@@ -4,57 +4,30 @@ using System.Collections;
 public class Translation : MonoBehaviour
 {
 
-    public float TimeStartForAnimation;
-    public bool isInertiaEnter;
-    public bool isInertiaLeave;
     public Vector3 EndPos;
-    public Vector3 Direction;
     public float Movement_Speed;
+    public float StartAnimation;
 
-    float Speed;
-
-    float Timer;
+    private RectTransform Entity;
+    private Vector3 LerpValue;
 
     // Use this for initialization
     void Start()
     {
+        Entity = this.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Timer += Time.deltaTime;
 
-        if (Timer > TimeStartForAnimation)
+        if (Time.unscaledTime > StartAnimation)
         {
-            if (isInertiaEnter == true)
-            {
-                Movement_Speed = Inertia(this.transform.position, EndPos, Movement_Speed * 10);
-            }
-            if (isInertiaLeave == true)
-            {
-                Movement_Speed += 10;
-            }
+            LerpValue.Set(Mathf.Lerp(Entity.localPosition.x, EndPos.x, Movement_Speed * Time.deltaTime),
+                          Mathf.Lerp(Entity.localPosition.y, EndPos.y, Movement_Speed * Time.deltaTime),
+                          Entity.localPosition.z);
 
-
-            if (Mathf.Round((this.transform.position - EndPos).magnitude) < 5)
-            {
-                Direction.Set(0, 0, 0);
-            }
-
-            this.transform.position = Move(this.transform.position, Direction, Movement_Speed, Time.deltaTime);
+            Entity.localPosition = LerpValue;
         }
-    }
-
-    Vector3 Move(Vector3 CurrentPos, Vector3 Direction, float Speed, float dt)
-    {
-        CurrentPos += Direction * Speed * dt;
-
-        return CurrentPos;
-    }
-
-    float Inertia(Vector3 Start, Vector3 End, float MaxSpeed)
-    {
-        return Mathf.Clamp((Start - End).magnitude, 1f, MaxSpeed);
     }
 }
