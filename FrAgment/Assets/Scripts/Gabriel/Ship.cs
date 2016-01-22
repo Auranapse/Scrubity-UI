@@ -8,17 +8,24 @@ public class Ship : MonoBehaviour
     public float f_Max_Ship_Speed;
     public float f_Ship_Speed_Sensitivity;
     public float f_Max_Vertical_Movement;
+    public float f_firerate;
+    public Vector2 v2_fireVelocity;
+    float f_firebullet;
     public Vector3 v3_StartPos;
     public Vector3 v3_EndPos;
     Vector3 v3_InitInputPos;
 
+    public GameObject Bullet;
     public GameObject FunctionCall;
 
     // Use this for initialization
     void Start()
     {
+        this.GetComponent<Rigidbody2D>().freezeRotation = true;
+
         v3_InitInputPos.Set(0, 0, 0);
         v3_Ship_Velocity.Set(0, 0, 0);
+        f_firebullet = 0f;
 
         this.transform.position = v3_StartPos;
     }
@@ -42,6 +49,18 @@ public class Ship : MonoBehaviour
                 break;
             case GameRuntimeHandler.GAME_STATES.PLAYING:
                 {
+                    //Shooting
+                    f_firebullet += Time.deltaTime;
+                    if(f_firebullet > f_firerate)
+                    {
+                        f_firebullet = 0f;
+
+                        
+                        GameObject temp = (GameObject)Instantiate(Bullet, this.transform.position + new Vector3(0, 100, 0), this.transform.rotation);
+                        temp.GetComponent<Rigidbody2D>().velocity = v2_fireVelocity + this.GetComponent<Rigidbody2D>().velocity;
+                    }
+
+
                     Vector3 inputPosition = Input.mousePosition;
 
                     //this.transform.position += new Vector3(f_Ship_Speed * Time.deltaTime,0,0);			
@@ -118,8 +137,8 @@ public class Ship : MonoBehaviour
                             v3_Ship_Velocity.y = 0;
                         }
                     }
-
-                    this.transform.position += v3_Ship_Velocity * Time.deltaTime;
+                    
+                    this.GetComponent<Rigidbody2D>().velocity = (v3_Ship_Velocity);
                 }
                 break;
         }

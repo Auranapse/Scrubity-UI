@@ -3,17 +3,14 @@ using System.Collections;
 
 public class TouchCursor : MonoBehaviour
 {
-
     Vector3 v3_InitInputPos;
     bool renderButton;
-    MeshRenderer thisMesh;
 
     // Use this for initialization
     void Start()
     {
         v3_InitInputPos.Set(0, 0, 0);
         renderButton = false;
-        thisMesh = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -28,7 +25,7 @@ public class TouchCursor : MonoBehaviour
             renderButton = true;
 
             this.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(inputPosition.x, inputPosition.y, 10));
-           
+
         }
 
         if (Input.GetMouseButtonUp(0))
