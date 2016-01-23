@@ -47,15 +47,21 @@
   <ItemGroup>
      <Compile Include="Assets\EditKeyBy1UsingButtons.cs" />
      <Compile Include="Assets\MusicManager.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\Bullet.cs" />
      <Compile Include="Assets\Scripts\Gabriel\GameRuntimeHandler.cs" />
      <Compile Include="Assets\Scripts\Gabriel\ScoreHandler.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Ship.cs" />
      <Compile Include="Assets\Scripts\Gabriel\SortingOrderHandler.cs" />
      <Compile Include="Assets\Scripts\Gabriel\TouchCursor.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\Transitions\G_Translator.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Transitions\SmoothTransition.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Transitions\UI_Bottom.cs" />
-     <Compile Include="Assets\Scripts\Gabriel\Transitions\UI_Top.cs" />
      <Compile Include="Assets\Scripts\Rayson\Fading.cs" />
+     <Compile Include="Assets\Scripts\Rayson\HelpScreenToMainMenu.cs" />
+     <Compile Include="Assets\Scripts\Rayson\MainMenuToChallenge.cs" />
+     <Compile Include="Assets\Scripts\Rayson\MainMenuToHelpScreen.cs" />
+     <Compile Include="Assets\Scripts\Rayson\MainMenuToSettings.cs" />
+     <Compile Include="Assets\Scripts\Rayson\RemoveAllLayers.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Rayson\Translation.cs" />

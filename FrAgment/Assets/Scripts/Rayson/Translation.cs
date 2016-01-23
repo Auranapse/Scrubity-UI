@@ -20,7 +20,6 @@ public class Translation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Time.unscaledTime > StartAnimation)
         {
             LerpValue.Set(Mathf.Lerp(Entity.localPosition.x, EndPos.x, Movement_Speed * Time.deltaTime),

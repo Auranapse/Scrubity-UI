@@ -7,17 +7,17 @@ public class Fading : MonoBehaviour {
     Image Entity;
     Color Fader;
 
-    float Timer;
-
     public float TimeToStartFade;
     public float FadeIntensity;
 
     public bool isFadeIn;
     public bool isFadeOut;
-    
+    public bool isComplete;
+
     // Use this for initialization
     void Start()
     {
+        isComplete = false;
         Entity = GetComponent<Image>();
         Fader = Entity.color;
         if (isFadeIn == true)
@@ -34,8 +34,7 @@ public class Fading : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Timer += Time.deltaTime;
-        if (Timer > TimeToStartFade)
+        if (Time.unscaledTime > TimeToStartFade)
         {
             if (isFadeIn == true)
             {
@@ -53,6 +52,11 @@ public class Fading : MonoBehaviour {
         Fader.a += FadeIntensity;
         Mathf.Clamp01(Fader.a);
         Entity.color = Fader;
+
+        if (Fader.a > 1)
+        {
+            isComplete = true;
+        }
     }
 
     void FadeOut()
@@ -60,5 +64,10 @@ public class Fading : MonoBehaviour {
         Fader.a -= FadeIntensity;
         Mathf.Clamp01(Fader.a);
         Entity.color = Fader;
+
+        if (Fader.a < 0)
+        {
+            isComplete = true;
+        }
     }
 }
