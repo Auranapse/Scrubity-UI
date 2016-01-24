@@ -5,6 +5,7 @@ public class Ship : MonoBehaviour
 {
     public float f_Transition_Speed;
     Vector3 v3_Ship_Velocity;
+    public int i_Health;
     public float f_Max_Ship_Speed;
     public float f_Ship_Speed_Sensitivity;
     public float f_Max_Vertical_Movement;
@@ -141,6 +142,16 @@ public class Ship : MonoBehaviour
                     this.GetComponent<Rigidbody2D>().velocity = (v3_Ship_Velocity);
                 }
                 break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        --i_Health;
+
+        if (i_Health <= 0)
+        {
+            FunctionCall.GetComponent<GameRuntimeHandler>().GAME_STATE = GameRuntimeHandler.GAME_STATES.DEATH;
         }
     }
 

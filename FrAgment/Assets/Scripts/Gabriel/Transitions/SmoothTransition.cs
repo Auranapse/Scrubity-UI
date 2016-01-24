@@ -37,11 +37,16 @@ public class SmoothTransition : MonoBehaviour
             }
         }
 
-       return v3_curPos;
+        return v3_curPos;
     }
 
     public bool S_TransitionIsDone()
     {
         return b_istransitiondone;
+    }
+
+    public void S_TransitionRedo()
+    {
+        b_istransitiondone = false;
     }
 }

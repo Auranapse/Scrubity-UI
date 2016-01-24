@@ -9,6 +9,8 @@ public class G_Translator : MonoBehaviour
     public float timeToStart;
     float timer;
 
+    public bool returnAtEnd;
+    bool isreturndone;
     public GameObject FunctionCall;
     bool setPos;
 
@@ -17,6 +19,7 @@ public class G_Translator : MonoBehaviour
     {
         timer = 0f;
         setPos = false;
+        isreturndone = false;
     }
 
     // Update is called once per frame
@@ -38,6 +41,34 @@ public class G_Translator : MonoBehaviour
             {
                 timer += Time.deltaTime;
             }
+        }
+
+        if (returnAtEnd)
+        {
+            if (v3_EndPos == v3_StartPos)
+            {
+
+            }
+            else
+            {
+                if (FunctionCall.GetComponent<GameRuntimeHandler>().GAME_STATE == GameRuntimeHandler.GAME_STATES.DEATH)
+                {
+                    v3_EndPos = v3_StartPos;
+                    FunctionCall.GetComponent<SmoothTransition>().S_TransitionRedo();
+                }
+            }
+        }
+    }
+
+    public bool isComplete()
+    {
+        if (returnAtEnd)
+        {
+            return isreturndone;
+        }
+        else
+        {
+            return FunctionCall.GetComponent<SmoothTransition>().S_TransitionIsDone();
         }
     }
 }
