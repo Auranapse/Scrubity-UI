@@ -3,17 +3,17 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-
+    public GameObject particle;
     // Use this for initialization
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isOutofworld())
+        if (isOutofworld())
         {
             Destroy(this.gameObject);
         }
@@ -40,5 +40,18 @@ public class Bullet : MonoBehaviour
         }
 
         return false;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        for (int i = 0; i < 5; ++i)
+        {
+            GameObject temp = (GameObject)Instantiate(particle, this.transform.position, Random.rotation);
+            Vector2 v2_temp = new Vector2(Random.Range(-70, 70), Random.Range(-100, -10));
+            temp.GetComponent<Rigidbody2D>().AddForce(v2_temp + this.GetComponent<Rigidbody2D>().velocity);
+            temp.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-100, 100));
+        }
+
+        Destroy(this.gameObject);
     }
 }

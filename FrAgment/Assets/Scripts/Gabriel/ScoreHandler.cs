@@ -38,7 +38,13 @@ public class ScoreHandler : MonoBehaviour
                 break;
             case GameRuntimeHandler.GAME_STATES.PLAYING:
                 {
-                    i_Score += 1;
+                    f_Timer += Time.deltaTime;
+                    if (f_Timer > 1)
+                    {
+                        i_Score += 1;
+                        f_Timer = 0;
+                    }
+                    
                     TEXTDISPLAY.text = i_Score.ToString();
                 }
                 break;
@@ -50,7 +56,7 @@ public class ScoreHandler : MonoBehaviour
         }
     }
 
-    public void modifyScore(int amount)
+    public void AddScore(int amount)
     {
         i_Score = i_Score + amount;
     }

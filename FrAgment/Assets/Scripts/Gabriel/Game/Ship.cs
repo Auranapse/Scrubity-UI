@@ -51,13 +51,13 @@ public class Ship : MonoBehaviour
                 {
                     //Shooting
                     f_firebullet += Time.deltaTime;
-                    if(f_firebullet > f_firerate)
+                    if (f_firebullet > f_firerate)
                     {
                         f_firebullet = 0f;
 
-                        
+
                         GameObject temp = (GameObject)Instantiate(Bullet, this.transform.position + new Vector3(0, 100, 0), this.transform.rotation);
-                        temp.GetComponent<Rigidbody2D>().velocity = v2_fireVelocity + this.GetComponent<Rigidbody2D>().velocity;
+                        temp.GetComponent<Rigidbody2D>().velocity = v2_fireVelocity;// + this.GetComponent<Rigidbody2D>().velocity;
                     }
 
 
@@ -137,10 +137,21 @@ public class Ship : MonoBehaviour
                             v3_Ship_Velocity.y = 0;
                         }
                     }
-                    
+
                     this.GetComponent<Rigidbody2D>().velocity = (v3_Ship_Velocity);
                 }
                 break;
         }
     }
+
+    public void Ability1()
+    {
+        Debug.Log("Ability 1");
+    }
+
+    public void Ability2()
+    {
+        Debug.Log("Ability 2");
+    }
+
 }

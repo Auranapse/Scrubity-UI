@@ -28,17 +28,6 @@ public class GameRuntimeHandler : MonoBehaviour
         f_GAME_TIMER += Time.deltaTime;
     }
 
-    public void Ability1()
-    {
-        Debug.Log("Ability 1");
-    }
-
-    public void Ability2()
-    {
-        Debug.Log("Ability 2");
-    }
-
-
     public float getRuntime()
     {
         return f_GAME_TIMER;
