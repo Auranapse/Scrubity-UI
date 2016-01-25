@@ -62,13 +62,11 @@ public class G_Translator : MonoBehaviour
 
     public bool isComplete()
     {
-        if (returnAtEnd)
-        {
-            return isreturndone;
-        }
-        else
-        {
-            return FunctionCall.GetComponent<SmoothTransition>().S_TransitionIsDone();
-        }
+        return FunctionCall.GetComponent<SmoothTransition>().S_TransitionIsDone();
+    }
+
+    public bool isCompleteEnd()
+    {
+        return isreturndone;
     }
 }

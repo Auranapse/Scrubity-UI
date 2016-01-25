@@ -7,8 +7,6 @@ public class GameRuntimeHandler : MonoBehaviour
     public float f_EnemySpawnRate;
     float f_EnemySpawner;
     bool b_isGameReady;
-    bool b_destruction;
-    GameObject[] DestructionList;
     // Use this for initialization
     public GameObject Enemy2;
 
@@ -27,7 +25,6 @@ public class GameRuntimeHandler : MonoBehaviour
         f_EnemySpawner = 0f;
         f_GAME_TIMER = 0f;
         b_isGameReady = false;
-        b_destruction = false;
     }
 
     // Update is called once per frame
@@ -42,7 +39,9 @@ public class GameRuntimeHandler : MonoBehaviour
                     if (f_EnemySpawnRate < f_EnemySpawner)
                     {
                         f_EnemySpawner = 0f;
-                        Instantiate(Enemy2, new Vector3(Random.Range(-350, 350), Random.Range(750, 850), 0), this.transform.rotation);
+                        GameObject temp = (GameObject)Instantiate(Enemy2, new Vector3(Random.Range(-350, 350), Random.Range(750, 850), 0), this.transform.rotation);
+                        temp.SetActive(true);
+                        temp.GetComponent<Enemies>().i_Health = 8;
                     }
                     else
                     {

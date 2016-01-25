@@ -27,6 +27,7 @@ public class Enemies : MonoBehaviour
     {
         arriveatDestination = true;
         f_firebullet = Random.Range(-f_firerate, f_firerate);
+        this.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class Enemies : MonoBehaviour
                         arriveatDestination = false;
                     }
 
-                    this.GetComponent<Rigidbody2D>().MoveRotation(0);
+                    this.GetComponent<Rigidbody2D>().angularVelocity += ((0 - this.GetComponent<Rigidbody2D>().angularVelocity) * 5f) * Time.deltaTime;
                 }
                 break;
         }
@@ -87,7 +88,7 @@ public class Enemies : MonoBehaviour
                 temp.transform.GetChild(i).GetComponent<Rigidbody2D>().angularVelocity = this.GetComponent<Rigidbody2D>().angularVelocity;
             }
 
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
         else
         {
