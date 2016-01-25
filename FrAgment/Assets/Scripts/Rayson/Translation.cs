@@ -10,6 +10,7 @@ public class Translation : MonoBehaviour
 
     private RectTransform Entity;
     private Vector3 LerpValue;
+    private float Timer;
 
     public Vector3 InitialPos;
 
@@ -18,12 +19,14 @@ public class Translation : MonoBehaviour
     {
         Entity = this.GetComponent<RectTransform>();
         InitialPos = Entity.position;
+        Timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.unscaledTime > StartAnimation)
+        Timer += Time.deltaTime;
+        if (Timer > StartAnimation)
         {
             LerpValue.Set(Mathf.Lerp(Entity.localPosition.x, EndPos.x, Movement_Speed * Time.deltaTime),
                           Mathf.Lerp(Entity.localPosition.y, EndPos.y, Movement_Speed * Time.deltaTime),

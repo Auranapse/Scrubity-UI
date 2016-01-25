@@ -69,7 +69,6 @@ public class LoadHelpPage : MonoBehaviour
                 isLoaded = true;
                 inProgress = false;
                 Timer = 0;
-                Debug.Log("hi");
             }
 
         }
@@ -118,19 +117,18 @@ public class LoadHelpPage : MonoBehaviour
                 isLoaded = false;
                 inProgress = false;
                 Timer = 0;
-
-                Debug.Log("biie");
+                
             }
 
 
         }
-
-        Debug.Log(GameObject.Find("FadeOutBox").GetComponent<Fading>().Fader.a);
+        
     }
     public void ChangeClickedState()
     {
         if (GameObject.Find("Help Button").GetComponent<LoadHelpPage>().inProgress == false)
         {
+            Debug.Log("test");
             GameObject.Find("Help Button").GetComponent<LoadHelpPage>().isClicked = !isClicked;
 
             GameObject.Find("Help Button").GetComponent<LoadHelpPage>().inProgress = true;
