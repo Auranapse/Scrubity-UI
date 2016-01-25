@@ -5,7 +5,7 @@ using System.Collections;
 public class Fading : MonoBehaviour {
     
     Image Entity;
-    Color Fader;
+    public Color Fader;
 
     public float TimeToStartFade;
     public float FadeIntensity;
@@ -50,11 +50,11 @@ public class Fading : MonoBehaviour {
     void FadeIn()
     {
         Fader.a += FadeIntensity;
-        Mathf.Clamp01(Fader.a);
         Entity.color = Fader;
 
         if (Fader.a > 1)
         {
+            Fader.a = 1;
             isComplete = true;
         }
     }
@@ -62,11 +62,12 @@ public class Fading : MonoBehaviour {
     void FadeOut()
     {
         Fader.a -= FadeIntensity;
-        Mathf.Clamp01(Fader.a);
         Entity.color = Fader;
 
         if (Fader.a < 0)
         {
+
+            Fader.a = 0;
             isComplete = true;
         }
     }

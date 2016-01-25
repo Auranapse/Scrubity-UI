@@ -11,10 +11,13 @@ public class Translation : MonoBehaviour
     private RectTransform Entity;
     private Vector3 LerpValue;
 
+    public Vector3 InitialPos;
+
     // Use this for initialization
     void Start()
     {
         Entity = this.GetComponent<RectTransform>();
+        InitialPos = Entity.position;
     }
 
     // Update is called once per frame
