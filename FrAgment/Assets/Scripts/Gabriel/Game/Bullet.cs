@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
         {
             GameObject temp = (GameObject)Instantiate(particle, this.transform.position, Random.rotation);
             Vector2 v2_temp = new Vector2(Random.Range(-70, 70), Random.Range(-100, -10));
-            temp.GetComponent<Rigidbody2D>().AddForce(v2_temp + this.GetComponent<Rigidbody2D>().velocity);
+            temp.GetComponent<Rigidbody2D>().AddForce(v2_temp);
             temp.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-100, 100));
         }
 

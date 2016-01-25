@@ -8,7 +8,13 @@ public class GameRuntimeHandler : MonoBehaviour
     float f_EnemySpawner;
     bool b_isGameReady;
     // Use this for initialization
+    float f_tapTimer;
+    int i_tapCount;
+    int i_prevExitCount;
+    int i_exitCount;
     public GameObject Enemy2;
+    float f_pausedDT;
+    float f_prevTime;
 
     public enum GAME_STATES
     {
@@ -22,6 +28,12 @@ public class GameRuntimeHandler : MonoBehaviour
 
     void Start()
     {
+        f_pausedDT = 0;
+        f_prevTime = Time.realtimeSinceStartup;
+        i_tapCount = 0;
+        i_exitCount = 0;
+        i_prevExitCount = 0;
+        f_tapTimer = 0f;
         f_EnemySpawner = 0f;
         f_GAME_TIMER = 0f;
         b_isGameReady = false;
@@ -32,8 +44,28 @@ public class GameRuntimeHandler : MonoBehaviour
     {
         f_GAME_TIMER += Time.deltaTime;
 
+        if (f_tapTimer > 0)
+        {
+            f_tapTimer -= f_pausedDT;
+        }
+
         switch (GAME_STATE)
         {
+            case GAME_STATES.INTRO:
+                {
+                    if (!b_isGameReady)
+                    {
+                        GameObject.Find("ScreenText").GetComponent<GameScreenText>().Display(2, "Double tap to pause");
+                    }
+                    else
+                    {
+                        if (GameObject.Find("ScreenText").GetComponent<GameScreenText>().isDoneDisplaying())
+                        {
+                            GameObject.Find("ScreenText").GetComponent<GameScreenText>().Display(2, "Get ready!");
+                        }
+                    }
+                }
+                break;
             case GAME_STATES.PLAYING:
                 {
                     if (f_EnemySpawnRate < f_EnemySpawner)
@@ -47,19 +79,113 @@ public class GameRuntimeHandler : MonoBehaviour
                     {
                         f_EnemySpawner += Time.deltaTime;
                     }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (f_tapTimer > 0)
+                        {
+                            if (i_tapCount == 1)
+                            {
+                                GameObject.Find("ScreenText").GetComponent<GameScreenText>().DisplayPernament("Double tap to resume");
+                                i_exitCount = 0;
+                                Time.timeScale = 0;
+                                GAME_STATE = GAME_STATES.PAUSED;
+                                i_tapCount = 0;
+                            }
+                        }
+                        else
+                        {
+                            f_tapTimer = 0.2f;
+                            i_tapCount = 1;
+                        }
+                    }
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        if (f_tapTimer <= 0)
+                        {
+                            i_tapCount = 0;
+                        }
+                    }
+                }
+                break;
+            case GAME_STATES.PAUSED:
+                {
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        if (i_exitCount != 0 && i_exitCount == i_prevExitCount)
+                        {
+                            GameObject.Find("ScreenText").GetComponent<GameScreenText>().DisplayPernament("Double tap to resume");
+                            i_exitCount = 0;
+                            i_prevExitCount = 0;
+                        }
+                    }
+
+                    if (i_exitCount >= 1)
+                    {
+                        i_prevExitCount = i_exitCount;
+
+                        if (i_exitCount == 2)
+                        {
+                            GameObject.Find("ScreenText").GetComponent<GameScreenText>().DisplayPernament("Press quit 1 more time to quit");
+                        }
+                        else if (i_exitCount >= 3)
+                        {
+                            GameObject.Find("ScreenText").GetComponent<GameScreenText>().unDisplayPernament();
+                            Time.timeScale = 1;
+                            GAME_STATE = GAME_STATES.DEATH;
+                        }
+                        else
+                        {
+                            GameObject.Find("ScreenText").GetComponent<GameScreenText>().DisplayPernament("Press quit 2 more times to quit");
+                        }
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (f_tapTimer > 0)
+                        {
+                            if (i_tapCount == 1)
+                            {
+                                GameObject.Find("ScreenText").GetComponent<GameScreenText>().unDisplayPernament();
+                                GAME_STATE = GAME_STATES.PLAYING;
+                                Time.timeScale = 1;
+                                i_tapCount = 0;
+                            }
+                        }
+                        else
+                        {
+                            f_tapTimer = 0.2f;
+                            i_tapCount = 1;
+                        }
+                    }
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        if (f_tapTimer <= 0)
+                        {
+                            i_tapCount = 0;
+                        }
+                    }
                 }
                 break;
             case GAME_STATES.DEATH:
                 {
-                    
+                    changetoEndScreen();
                 }
                 break;
         }
+
+        f_pausedDT = Time.realtimeSinceStartup - f_prevTime;
+        f_prevTime = Time.realtimeSinceStartup;
     }
 
     public float getRuntime()
     {
         return f_GAME_TIMER;
+    }
+
+    public float getDeltaTimeUnpaused()
+    {
+        return f_pausedDT;
     }
 
     public void setReadytobegin()
@@ -70,5 +196,18 @@ public class GameRuntimeHandler : MonoBehaviour
     public bool isGameReady()
     {
         return b_isGameReady;
+    }
+
+    public void exitButton()
+    {
+        if(GAME_STATE == GAME_STATES.PAUSED)
+        {
+            ++i_exitCount;
+        }
+    }
+
+    public void changetoEndScreen()
+    {
+        Debug.Log("CHANGESCENE");
     }
 }
