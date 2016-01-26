@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Gabriel\Transitions\G_Translator.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Transitions\SmoothTransition.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Transitions\UI_Bottom.cs" />
+     <Compile Include="Assets\Scripts\Rayson\EndScreenToGamePlay.cs" />
      <Compile Include="Assets\Scripts\Rayson\Fading.cs" />
      <Compile Include="Assets\Scripts\Rayson\HelpScreenToMainMenu.cs" />
      <Compile Include="Assets\Scripts\Rayson\LoadHelpPage.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\Scripts\Rayson\MainMenuToHelpScreen.cs" />
      <Compile Include="Assets\Scripts\Rayson\MainMenuToSettings.cs" />
      <Compile Include="Assets\Scripts\Rayson\RemoveAllLayers.cs" />
+     <Compile Include="Assets\Scripts\Rayson\Rotation.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Rayson\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Rayson\Translation.cs" />
