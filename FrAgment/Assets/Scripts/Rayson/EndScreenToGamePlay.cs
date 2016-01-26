@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EndScreenToGamePlay : MonoBehaviour {
+public class EndScreenToGamePlay : MonoBehaviour
+{
 
     float Timer;
     bool Execute;
@@ -11,15 +12,16 @@ public class EndScreenToGamePlay : MonoBehaviour {
     public float RotationSpeed;
     Vector3 RotateBy;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         isRotateCompleted = false;
         RotateBy.Set(0, 0, 1);
         BlackBoxT = GameObject.Find("BlackBox_Top").GetComponent<RectTransform>();
         Execute = false;
         BlackBoxB = GameObject.Find("BlackBox_Bottom").GetComponent<RectTransform>();
         Timer = 0;
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -63,7 +65,7 @@ public class EndScreenToGamePlay : MonoBehaviour {
                 GameObject.Find("BlackBox_Top").GetComponent<Translation>().EndPos = GameObject.Find("BlackBox_Top").GetComponent<Translation>().InitialPos;
 
                 GameObject.Find("BlackBox_Bottom").GetComponent<Translation>().EndPos = GameObject.Find("BlackBox_Bottom").GetComponent<Translation>().InitialPos;
-                
+
             }
             if (Timer > 2)
             {

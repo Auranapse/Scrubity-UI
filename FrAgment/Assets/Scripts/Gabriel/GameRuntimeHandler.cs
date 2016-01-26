@@ -176,7 +176,7 @@ public class GameRuntimeHandler : MonoBehaviour
             case GAME_STATES.DEATH:
                 {
                     f_waittoexit += Time.deltaTime;
-                    if (f_waittoexit > 2)
+                    if (f_waittoexit > 1.5)
                     {
                         changetoEndScreen();
                     }
