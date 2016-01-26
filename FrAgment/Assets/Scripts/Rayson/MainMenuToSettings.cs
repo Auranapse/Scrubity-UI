@@ -5,24 +5,26 @@ public class MainMenuToSettings : MonoBehaviour {
 
     bool StartAnimation;
 
-    bool UIAnim_Done, TopBoxAnim_D, BotBoxAnim_D;
+    bool UI_Anim_D, TopBoxAnim_D, BotBoxAnim_D;
 
-    private RectTransform TopBox,BotBox,UI;
+    private RectTransform TopBox,BotBox;
 
     Vector3 UI_EndScale;
     Vector3 UI_ScaleSpeed;
 
     Vector3 TopBoxRotation,BotBoxRotation;
 
+    private GameObject UI;
+    float Timer;
 	// Use this for initialization
 	void Start () {
+        Timer = 0;
         StartAnimation = false;
-        UIAnim_Done = false;
+        UI_Anim_D = false;
         TopBoxAnim_D = false;
         BotBoxAnim_D = false;
         TopBox = GameObject.Find("BlackBox_Top").GetComponent<RectTransform>();
         BotBox = GameObject.Find("BlackBox_Bottom").GetComponent<RectTransform>();
-        UI = GameObject.Find("User Interface").GetComponent<RectTransform>();
         UI_EndScale.Set(0.1f, 0.1f, 0);
         UI_ScaleSpeed.Set(0.02f, 0.02f, 0);
         TopBoxRotation.Set(0,0,1f);
@@ -31,22 +33,39 @@ public class MainMenuToSettings : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Timer += Time.deltaTime;
+
         if (StartAnimation == true)
         {
             //remove UI
-            if (UI.localScale.x > UI_EndScale.x || UI.localScale.y > UI_EndScale.y)
+            if (Timer > 0)
             {
-                UI.localScale -= UI_ScaleSpeed;
+                UI = GameObject.Find("Title");
+                UI.GetComponent<Translation>().EndPos = UI.GetComponent<Translation>().InitialPos;
 
-                Debug.Log(UI.localScale);
+                UI = GameObject.Find("Start Button");
+                UI.GetComponent<Translation>().EndPos = UI.GetComponent<Translation>().InitialPos;
+
+                UI = GameObject.Find("Survival Button");
+                UI.GetComponent<Translation>().EndPos = UI.GetComponent<Translation>().InitialPos;
+
+                UI = GameObject.Find("Settings Button");
+                UI.GetComponent<Translation>().EndPos = UI.GetComponent<Translation>().InitialPos;
+
+                UI = GameObject.Find("Zen Button");
+                UI.GetComponent<Translation>().EndPos = UI.GetComponent<Translation>().InitialPos;
+
+                UI = GameObject.Find("Help Button");
+                UI.GetComponent<Translation>().EndPos = UI.GetComponent<Translation>().InitialPos;
+                UI_Anim_D = true;
             }
             else
             {
-                UIAnim_Done = true;
+                UI_Anim_D = true;
             }
             if (TopBox.localEulerAngles.z < 200)
             {
-                TopBox.localEulerAngles += TopBoxRotation;
+                TopBox.localEulerAngles += TopBoxRotation * Time.deltaTime * 120;
             }
             else
             {
@@ -57,7 +76,7 @@ public class MainMenuToSettings : MonoBehaviour {
 
             if (BotBox.localEulerAngles.z > 161)
             {
-                BotBox.localEulerAngles -= BotBoxRotation;
+                BotBox.localEulerAngles -= BotBoxRotation * Time.deltaTime * 120;
             }
             else
             {
@@ -66,7 +85,7 @@ public class MainMenuToSettings : MonoBehaviour {
                 BotBoxAnim_D = true;
             }
         }
-        if (TopBoxAnim_D == true && UIAnim_Done == true && BotBoxAnim_D == true)
+        if (TopBoxAnim_D == true && UI_Anim_D == true && BotBoxAnim_D == true)
         {
             StartAnimation = false;
             Application.LoadLevel("OptionScreen_Control");

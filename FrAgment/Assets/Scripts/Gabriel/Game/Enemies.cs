@@ -74,25 +74,28 @@ public class Enemies : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        i_Health -= 1;
-
-        if (i_Health <= 0)
+        if(!col.gameObject.CompareTag("AI"))
         {
-            GameObject temp = (GameObject)Instantiate(CrackedEnemy, this.transform.position, this.transform.rotation);
+            i_Health -= 1;
 
-            ScoreHandle.GetComponent<ScoreHandler>().AddScore(50);
-
-            for (int i = 0; i < temp.transform.childCount; ++i)
+            if (i_Health <= 0)
             {
-                temp.transform.GetChild(i).GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
-                temp.transform.GetChild(i).GetComponent<Rigidbody2D>().angularVelocity = this.GetComponent<Rigidbody2D>().angularVelocity;
-            }
+                GameObject temp = (GameObject)Instantiate(CrackedEnemy, this.transform.position, this.transform.rotation);
 
-            this.gameObject.SetActive(false);
-        }
-        else
-        {
-            ScoreHandle.GetComponent<ScoreHandler>().AddScore(5);
+                ScoreHandle.GetComponent<ScoreHandler>().AddScore(50);
+
+                for (int i = 0; i < temp.transform.childCount; ++i)
+                {
+                    temp.transform.GetChild(i).GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
+                    temp.transform.GetChild(i).GetComponent<Rigidbody2D>().angularVelocity = this.GetComponent<Rigidbody2D>().angularVelocity;
+                }
+
+                this.gameObject.SetActive(false);
+            }
+            else
+            {
+                ScoreHandle.GetComponent<ScoreHandler>().AddScore(5);
+            }
         }
     }
 }

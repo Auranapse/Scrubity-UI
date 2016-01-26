@@ -5,6 +5,7 @@ public class GameRuntimeHandler : MonoBehaviour
 {
     float f_GAME_TIMER;
     public float f_EnemySpawnRate;
+    int i_enemyHealth;
     float f_EnemySpawner;
     bool b_isGameReady;
     // Use this for initialization
@@ -15,6 +16,9 @@ public class GameRuntimeHandler : MonoBehaviour
     public GameObject Enemy2;
     float f_pausedDT;
     float f_prevTime;
+    float f_waittoexit;
+
+    public string SceneToChangeToAtEndGame;
 
     public enum GAME_STATES
     {
@@ -28,7 +32,8 @@ public class GameRuntimeHandler : MonoBehaviour
 
     void Start()
     {
-        f_pausedDT = 0;
+        f_waittoexit = 0f;
+        f_pausedDT = 0f;
         f_prevTime = Time.realtimeSinceStartup;
         i_tapCount = 0;
         i_exitCount = 0;
@@ -37,6 +42,7 @@ public class GameRuntimeHandler : MonoBehaviour
         f_EnemySpawner = 0f;
         f_GAME_TIMER = 0f;
         b_isGameReady = false;
+        i_enemyHealth = Enemy2.GetComponent<Enemies>().i_Health;
     }
 
     // Update is called once per frame
@@ -73,7 +79,7 @@ public class GameRuntimeHandler : MonoBehaviour
                         f_EnemySpawner = 0f;
                         GameObject temp = (GameObject)Instantiate(Enemy2, new Vector3(Random.Range(-350, 350), Random.Range(750, 850), 0), this.transform.rotation);
                         temp.SetActive(true);
-                        temp.GetComponent<Enemies>().i_Health = 8;
+                        temp.GetComponent<Enemies>().i_Health = i_enemyHealth;
                     }
                     else
                     {
@@ -169,7 +175,11 @@ public class GameRuntimeHandler : MonoBehaviour
                 break;
             case GAME_STATES.DEATH:
                 {
-                    changetoEndScreen();
+                    f_waittoexit += Time.deltaTime;
+                    if (f_waittoexit > 2)
+                    {
+                        changetoEndScreen();
+                    }
                 }
                 break;
         }
@@ -200,7 +210,7 @@ public class GameRuntimeHandler : MonoBehaviour
 
     public void exitButton()
     {
-        if(GAME_STATE == GAME_STATES.PAUSED)
+        if (GAME_STATE == GAME_STATES.PAUSED)
         {
             ++i_exitCount;
         }
@@ -208,6 +218,6 @@ public class GameRuntimeHandler : MonoBehaviour
 
     public void changetoEndScreen()
     {
-        Debug.Log("CHANGESCENE");
+        Application.LoadLevel(SceneToChangeToAtEndGame);
     }
 }

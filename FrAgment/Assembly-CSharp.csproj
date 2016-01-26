@@ -38,10 +38,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>F:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>F:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -49,13 +49,16 @@
      <Compile Include="Assets\MusicManager.cs" />
      <Compile Include="Assets\Scripts\Gabriel\AbilityButton1.cs" />
      <Compile Include="Assets\Scripts\Gabriel\AbilityButton2.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\ChallengeToGameplaySceneLoading.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Game\Bullet.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Game\Enemies.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Game\Ship.cs" />
      <Compile Include="Assets\Scripts\Gabriel\GameRuntimeHandler.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\GameScreenText.cs" />
      <Compile Include="Assets\Scripts\Gabriel\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Other\G_Fading.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Other\G_Fading_End.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\QuitButton.cs" />
      <Compile Include="Assets\Scripts\Gabriel\ScoreHandler.cs" />
      <Compile Include="Assets\Scripts\Gabriel\SortingOrderHandler.cs" />
      <Compile Include="Assets\Scripts\Gabriel\TouchCursor.cs" />
@@ -98,22 +101,22 @@
      <Compile Include="Assets\placeholderToMenu.cs" />
      <Compile Include="Assets\playSFX.cs" />
  <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
- <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

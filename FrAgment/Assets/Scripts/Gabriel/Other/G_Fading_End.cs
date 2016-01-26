@@ -6,7 +6,6 @@ public class G_Fading_End : MonoBehaviour
     SpriteRenderer sprite;
     Color colour;
     public float FadeSpeed;
-    public GameObject GlobalFunctions;
 
     // Use this for initialization
     void Start()
@@ -18,11 +17,10 @@ public class G_Fading_End : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalFunctions.GetComponent<GameRuntimeHandler>().GAME_STATE == GameRuntimeHandler.GAME_STATES.DEATH)
+        if (GameObject.Find("GlobalScripts").GetComponent<GameRuntimeHandler>().GAME_STATE == GameRuntimeHandler.GAME_STATES.DEATH)
         {
             if (colour.a > 0)
             {
-
                 colour.a -= FadeSpeed * Time.deltaTime;
                 sprite.color = colour;
             }

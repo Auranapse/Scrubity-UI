@@ -2,7 +2,8 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
+public class ChallengeToGameplaySceneLoading : MonoBehaviour, IPointerClickHandler
+{
     public string SceneToChangeTo;
 
     private bool startAnim;
@@ -17,10 +18,11 @@ public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
 
     private RectTransform topBox;
     private RectTransform btmBox;
-    private RectTransform challengesText;    
+    private RectTransform challengesText;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         startMenuAnim = false;
         startAnim = false;
 
@@ -34,10 +36,11 @@ public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
 
         topBox = GameObject.Find("BlackBox_Top").GetComponent<RectTransform>();
         btmBox = GameObject.Find("BlackBox_Bottom").GetComponent<RectTransform>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //Fade out Back btn, Left/Right arrow btns, Tint group
         if (startAnim)
         {
@@ -57,49 +60,48 @@ public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
 
             //Move levelgroups out
             Vector3 translate3 = levelGroup.localPosition;
-            translate3.y = Mathf.Lerp(translate3.y, 800, Time.deltaTime * 10);
+            translate3.y = Mathf.Lerp(translate3.y, 1000, Time.deltaTime * 10);
             levelGroup.localPosition = translate3;
 
-            if (translate3.y > 700 && translate.x < -950) {
+            if (translate3.y > 700 && translate.x < -950)
+            {
                 startMenuAnim = true;
             }
         }
         if (startMenuAnim)
         {
             // Rotate top black box
-            Vector3 rotate = topBox.localEulerAngles;
-            rotate.z = rotate.z - (Time.deltaTime * 75);
-            if (rotate.z < 20) rotate.z += 360;
-            if (rotate.z < 340)
+            Vector3 move = topBox.position;
+            move.y = move.y + (Time.deltaTime * 450);
+            if (move.y > 1000)
             {
-                rotate.z = 340;
+                move.y = 1000;
             }
-            //else
+            else
             {
-                topBox.localEulerAngles = rotate;
+                topBox.position = move;
             }
 
             // Rotate bottom black box
-            Vector3 rotate2 = btmBox.localEulerAngles;
-            rotate2.z = rotate2.z + (Time.deltaTime * 75);
-            if (rotate2.z > 320) rotate2.z -= 360;
-            Debug.Log(rotate2.z);
-            if (rotate2.z > 20)
+            Vector3 move2 = btmBox.position;
+            move2.y = move2.y - (Time.deltaTime * 300);
+
+            if (move2.y < -980)
             {
-                rotate2.z = 20;
+                move2.y = -980;
             }
-            //else
+            else
             {
-                btmBox.localEulerAngles = rotate2;
+                btmBox.position = move2;
             }
 
-            if (rotate.z == 340 && rotate2.z == 20)
+            if (move.y == 1000 && move2.y == -980)
             {
                 Application.LoadLevel(SceneToChangeTo);
-                Debug.Log("Loading Menu");
+                Debug.Log("Loading Game");
             }
         }
-	}
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -108,8 +110,6 @@ public class CHLGFadeout : MonoBehaviour, IPointerClickHandler {
             tracker.SceneToChangeTo = SceneToChangeTo;
             initCHLGScreen.initialiseElements = false;
             startAnim = true;
-
-            Debug.Log("Start CHLG animation to Menu Screen");
         }
     }
 }
