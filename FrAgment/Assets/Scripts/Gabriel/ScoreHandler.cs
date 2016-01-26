@@ -7,6 +7,7 @@ public class ScoreHandler : MonoBehaviour
     public GameObject FunctionCall;
     float f_Timer;
     int i_Score;
+    int i_HighScore;
     TextMesh TEXTDISPLAY;
 
     // Use this for initialization
@@ -14,6 +15,7 @@ public class ScoreHandler : MonoBehaviour
     {
         f_Timer = 5f;
         i_Score = 0;
+        i_HighScore = GameData.i_HighScore;
         TEXTDISPLAY = GetComponent<TextMesh>();
     }
 
@@ -51,6 +53,16 @@ public class ScoreHandler : MonoBehaviour
             case GameRuntimeHandler.GAME_STATES.PAUSED:
                 {
                     TEXTDISPLAY.text = "PAUSED";
+                }
+                break;
+            case GameRuntimeHandler.GAME_STATES.DEATH:
+                {
+                    if(i_Score > i_HighScore)
+                    {
+                        i_HighScore = i_Score;
+                        GameData.i_HighScore = i_HighScore;
+                        PlayerPrefs.SetInt("GAMEPLAY_HIGHSCORE", GameData.i_HighScore);
+                    }
                 }
                 break;
         }
