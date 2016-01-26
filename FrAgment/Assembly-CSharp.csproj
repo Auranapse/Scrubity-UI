@@ -50,9 +50,12 @@
      <Compile Include="Assets\Scripts\Gabriel\AbilityButton1.cs" />
      <Compile Include="Assets\Scripts\Gabriel\AbilityButton2.cs" />
      <Compile Include="Assets\Scripts\Gabriel\ChallengeToGameplaySceneLoading.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\DisplayHighscore.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\EndScreenToMenu.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Game\Bullet.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Game\Enemies.cs" />
      <Compile Include="Assets\Scripts\Gabriel\Game\Ship.cs" />
+     <Compile Include="Assets\Scripts\Gabriel\GameData.cs" />
      <Compile Include="Assets\Scripts\Gabriel\GameRuntimeHandler.cs" />
      <Compile Include="Assets\Scripts\Gabriel\GameScreenText.cs" />
      <Compile Include="Assets\Scripts\Gabriel\HealthBar.cs" />
@@ -102,11 +105,17 @@
      <Compile Include="Assets\invalidButtonScript.cs" />
      <Compile Include="Assets\placeholderToMenu.cs" />
      <Compile Include="Assets\playSFX.cs" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
