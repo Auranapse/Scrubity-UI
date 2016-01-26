@@ -63,6 +63,8 @@ public class ScoreHandler : MonoBehaviour
                         GameData.i_HighScore = i_HighScore;
                         PlayerPrefs.SetInt("GAMEPLAY_HIGHSCORE", GameData.i_HighScore);
                     }
+
+                    PlayerPrefs.SetInt("GAMEPLAY_SCORE", i_Score);
                 }
                 break;
         }
