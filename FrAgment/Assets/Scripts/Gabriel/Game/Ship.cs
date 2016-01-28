@@ -8,7 +8,7 @@ public class Ship : MonoBehaviour
     public int i_Health;
     int i_Health_Max;
     public float f_Max_Ship_Speed;
-    public float f_Ship_Speed_Sensitivity;
+    private float f_Ship_Speed_Sensitivity;
     public float f_Max_Vertical_Movement;
     public float f_firerate;
     public Vector2 v2_fireVelocity;
@@ -52,6 +52,8 @@ public class Ship : MonoBehaviour
         v3_InitInputPos.Set(0, 0, 0);
         v3_Ship_Velocity.Set(0, 0, 0);
         f_firebullet = 0f;
+
+       f_Ship_Speed_Sensitivity = PlayerPrefs.GetInt("f_Ship_Speed_Sensitivity");
 
         this.transform.position = v3_StartPos;
     }

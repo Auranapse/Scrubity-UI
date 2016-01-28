@@ -2,7 +2,8 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CTRLFadeout : MonoBehaviour {
+public class CTRLFadeout : MonoBehaviour
+{
     public string SceneToChangeTo;
 
     private bool startAnim;
@@ -21,8 +22,9 @@ public class CTRLFadeout : MonoBehaviour {
     private CanvasGroup settingsSquare;
     private CanvasGroup backBtn;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         startAnim = false;
         startMenuAnim = false;
 
@@ -30,12 +32,21 @@ public class CTRLFadeout : MonoBehaviour {
         spaceship = GameObject.Find("Spaceship").GetComponent<RectTransform>();
 
         curSquare = GameObject.Find("TopBtn").GetComponent<CanvasRenderer>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        wtfUnityFloats = false;
+        annoying = false;
+    }
+
+    Vector3 topR, botR;
+    Vector3 stupidUnity;
+    bool wtfUnityFloats, annoying;
+    // Update is called once per frame
+    void Update()
+    {
         if (startAnim)
         {
+            GameObject.Find("Options Tutorial").GetComponent<CanvasGroup>().alpha = 0;
+
             // Get options out of the way
             Vector3 translate = optionsContainer.localPosition;
             translate.y = Mathf.Lerp(translate.y, -460, Time.deltaTime * 10);
@@ -54,7 +65,8 @@ public class CTRLFadeout : MonoBehaviour {
             if (optionsContainer.localPosition.y < -260 && spaceship.localPosition.y > 500)
             {
                 startAnim = false;
-                if (SceneToChangeTo == "MenuScreen") {
+                if (SceneToChangeTo == "MenuScreen")
+                {
                     Debug.Log("Start menu transitioning");
                     startMenuAnim = true;
                 }
@@ -75,42 +87,45 @@ public class CTRLFadeout : MonoBehaviour {
             translate.x = Mathf.Lerp(translate.x, -900, Time.deltaTime * 10);
             settingsText.localPosition = translate;
 
-            // Rotate top black box
-            Vector3 rotate = topBox.localEulerAngles;
-            rotate.z = rotate.z - (Time.deltaTime * 140);
-            if (rotate.z < 20) rotate.z += 360;
-            if (rotate.z < 340) {
-                rotate.z = 340;
-            }// else
-            {
-                topBox.localEulerAngles = rotate;
-            }
+            topR.Set(0, 0, -1);
+            botR.Set(0, 0, 1);
 
-            // Rotate bottom black box
-            Vector3 rotate2 = btmBox.localEulerAngles;
-            rotate2.z = rotate2.z + (Time.deltaTime * 220);
-            if (rotate2.z > 320) rotate2.z -= 360;
-            
-            if (rotate2.z > 20)
+            //blackbox
+            if (topBox.localEulerAngles.z > 160.1f)
+                topBox.localEulerAngles += topR * Time.deltaTime * 120;
+            else
             {
-                rotate2.z = 20;
+                stupidUnity.Set(0, 0, 160);
+                topBox.localEulerAngles = stupidUnity;
+                wtfUnityFloats = true;
+        }
+
+            if (btmBox.localEulerAngles.z < 200)
+            {
+                btmBox.localEulerAngles += botR * Time.deltaTime * 120;
             }
-           // else
+            else
             {
-                btmBox.localEulerAngles = rotate2;
+                stupidUnity.Set(0, 0, 200);
+                btmBox.localEulerAngles = stupidUnity;
+                annoying = true;
             }
 
             //Fade out squares + back btn
             settingsSquare.alpha = (Mathf.Lerp(settingsSquare.alpha, 0.0f, Time.deltaTime * 13));
             backBtn.alpha = (Mathf.Lerp(backBtn.alpha, 0.0f, Time.deltaTime * 13));
 
-            if (rotate.z == 340 && rotate2.z == 20)
+            if (wtfUnityFloats && annoying)
             {
                 Application.LoadLevel(SceneToChangeTo);
                 Debug.Log("Loading Menu");
             }
+            else
+            {
+                Debug.Log(topBox.localEulerAngles.z + " " + btmBox.localEulerAngles.z);
+            }
         }
-	}
+    }
 
     public void startFadeoutAnim()
     {
